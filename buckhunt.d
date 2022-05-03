@@ -1,0 +1,14 @@
+.\buckhunt.o: BuckHunt.c
+.\buckhunt.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\buckhunt.o: ../inc/tm4c123gh6pm.h
+.\buckhunt.o: ST7735.h
+.\buckhunt.o: Print.h
+.\buckhunt.o: Random.h
+.\buckhunt.o: TExaS.h
+.\buckhunt.o: ADC.h
+.\buckhunt.o: Images.h
+.\buckhunt.o: Sound.h
+.\buckhunt.o: Timer1.h
+.\buckhunt.o: Timer2.h
+.\buckhunt.o: Timer0A.h
+.\buckhunt.o: Buttons.h
