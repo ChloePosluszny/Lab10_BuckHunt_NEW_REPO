@@ -46,7 +46,7 @@ void Timer1A_Handler(void){ // can be used to perform tasks in background
 struct Deer{
     uint8_t x; 		//x position
 		uint8_t y; 		//y position
-		int8_t alive;	//life status (alive or dead) //0 dead 1 alive
+		//int8_t alive;	//life status (alive or dead) //0 dead 1 alive
 		int8_t xold; 	//old x poision for use in redraw
 		int8_t yold; 	//old y poision for use in redraw
 		int8_t vx; 		// x velocity
@@ -121,8 +121,9 @@ void moveDeer(DeerStruct deer){
 		deer.y += deer.vy;
 	}
 	
+	//deer width & height = 32
 	ST7735_FillRect(deer.xold,deer.yold-(deer.w-1) /*y-height-1*/,deer.w /*width*/,deer.h /*height*/,0xC9DF); //replace old sprite
-	ST7735_DrawBitmap(deer.x,deer.y,reticle.image,deer.h,deer.w); //draw new sprite
+	ST7735_DrawBitmap(deer.x,deer.y,deer.image,deer.h,deer.w); //draw new sprite
 }
 
 //Reload
@@ -136,6 +137,7 @@ void countsec(){ //function to decrease the game time every second.
 };
 
 int main(void){
+	//screen dimensions x = 128; y = 160
  DisableInterrupts();
   TExaS_Init(NONE);       // Bus clock is 80 MHz 
 	ADC_Init();
@@ -144,6 +146,22 @@ int main(void){
 	Port_E_Init();
 	ST7735_SetRotation(2);
 	ST7735_FillScreen(0x0000);   // set screen to black
+	
+	DeerStruct buck1;
+	buck1.x = 128;
+	buck1.y = 160;
+	buck1.w = 32;
+	buck1.h = 32;
+	buck1.doeOrBuck = 1; //buck
+	buck1.image = LFBuck0;
+	
+	DeerStruct doe1;
+	doe1.x = 128;
+	doe1.y = 60;
+	doe1.w = 32;
+	doe1.h = 32;
+	doe1.doeOrBuck = 0; //doe
+	doe1.image = LFDoe0;
 	
 	//language select:
 	//remember port F buttons are negative logic
